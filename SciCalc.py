@@ -150,13 +150,19 @@ class Calc():
 	# For natural log
 	def log(self):
 		self.result = False
-		self.current = math.log(float(txtDisplay.get()))
-		self.display(self.current)
-	
+		temp = float(txtDisplay.get())
+		
+		if(temp > 0):
+			self.current = math.log(float(txtDisplay.get()))
+			self.display(self.current)
+		else:
+			self.current = 0
+			self.total = 0
+			self.display(0)
 	
 	# for exponential
 	def exp(self):
-		self.result = False
+		self.result = False		
 		self.current = math.exp(float(txtDisplay.get()))
 		self.display(self.current)
 	
@@ -210,18 +216,41 @@ class Calc():
 	
 	def log2(self):
 		self.result = False
-		self.current = math.log2(float(txtDisplay.get()))
-		self.display(self.current)
+		temp = float(txtDisplay.get())
+		
+		if(temp > 0):
+			self.current = math.log2(float(txtDisplay.get()))
+			self.display(self.current)
+		else:
+			self.current = 0
+			self.total = 0
+			self.display(0)
+	
 	
 	def log10(self):
 		self.result = False
-		self.current = math.log10(float(txtDisplay.get()))
-		self.display(self.current)
+		temp = float(txtDisplay.get())
+		
+		if(temp > 0):
+			self.current = math.log10(float(txtDisplay.get()))
+			self.display(self.current)
+		else:
+			self.current = 0
+			self.total = 0
+			self.display(0)
+	
 	
 	def log1p(self):
 		self.result = False
-		self.current = math.log1p(float(txtDisplay.get()))
-		self.display(self.current)
+		temp = float(txtDisplay.get())
+		
+		if(temp > 0):
+			self.current = math.log1p(float(txtDisplay.get()))
+			self.display(self.current)
+		else:
+			self.current = 0
+			self.total = 0
+			self.display(0)
 	
 	
 	
