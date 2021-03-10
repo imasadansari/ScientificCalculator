@@ -25,6 +25,7 @@ class Calc():
 		self.op = ""
 		self.result = False
 		
+	# For numberss
 	def numberEnter(self,num):
 		self.result = False
 		firstnum = txtDisplay.get()
@@ -39,6 +40,7 @@ class Calc():
 			self.current = firstnum + secondnum
 		self.display(self.current)
 	
+	# Function for equals
 	def sum_of_total(self):
 		self.result = True
 		self.current = float(self.current)
@@ -47,11 +49,12 @@ class Calc():
 		else:
 			self.total = float(txtDisplay.get())
 	
-	
+	# For Display
 	def display(self, value):
 		txtDisplay.delete(0, END)
 		txtDisplay.insert(0, value)
 	
+	# FOr Arithmatic Functions
 	def valid_function(self):
 		if self.op == "add":
 			self.total += self.current
@@ -60,6 +63,11 @@ class Calc():
 		if self.op == "multi":
 			self.total *= self.current
 		if self.op == "divide":
+			if self.current == 0:
+				self.current = self.total
+				self.display(self.current)
+				print("U cannot devide by 0")
+			else:
 				self.total /= self.current
 		if self.op == "mod":
 			self.total %= self.current
@@ -68,6 +76,7 @@ class Calc():
 		self.display(self.total)
 		
 		
+	# For operators
 	def operation(self, op):
 		self.current = float(self.current)
 		if self.check_sum:
@@ -79,28 +88,31 @@ class Calc():
 		self.op = op
 		self.result = False
 	
+	# Clear
 	def Clear_Entry(self):
 		self.result = False
 		self.current = "0"
 		self.display(0)
 		self.input_value = True
 	
+	# For all clear
 	def all_Clear_Entry(self):
 		self.Clear_Entry()
 		self.total = 0
 	
+	# For Plus Minus
 	def mathsPM(self):
 		self.result = False
 		self.current = -(float(txtDisplay.get()))
 		self.display(self.current)
 	
-	
+	# Squre root
 	def squared(self):
 		self.result = False
 		self.current = math.sqrt(float(txtDisplay.get()))
 		self.display(self.current)
 		
-		
+	# Trigonometric functions
 	def cos(self):
 		self.result = False
 		self.current = math.cos(math.radians(float(txtDisplay.get())))
@@ -135,26 +147,32 @@ class Calc():
 		self.current = math.sinh(math.radians(float(txtDisplay.get())))
 		self.display(self.current)
 	
+	# For natural log
 	def log(self):
 		self.result = False
 		self.current = math.log(float(txtDisplay.get()))
 		self.display(self.current)
 	
+	
+	# for exponential
 	def exp(self):
 		self.result = False
 		self.current = math.exp(float(txtDisplay.get()))
 		self.display(self.current)
 	
+	# pi
 	def pi(self):
 		self.result = False
 		self.current = math.pi
 		self.display(self.current)
 		
+	# pi * 2
 	def pi2(self):
 		self.result = False
 		self.current = math.tau
 		self.display(self.current)
 	
+	# e
 	def e(self):
 		self.result = False
 		self.current = math.e
