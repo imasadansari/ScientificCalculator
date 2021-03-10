@@ -79,10 +79,130 @@ class Calc():
 		self.op = op
 		self.result = False
 	
+	def Clear_Entry(self):
+		self.result = False
+		self.current = "0"
+		self.display(0)
+		self.input_value = True
+	
+	def all_Clear_Entry(self):
+		self.Clear_Entry()
+		self.total = 0
+	
+	
+	def squared(self):
+		self.result = False
+		self.current = math.sqrt(float(txtDisplay.get()))
+		self.display(self.current)
+		
+		
+	def cos(self):
+		self.result = False
+		self.current = math.cos(math.radians(float(txtDisplay.get())))
+		self.display(self.current)
+
+	
+	def cosh(self):
+		self.result = False
+		self.current = math.cosh(math.radians(float(txtDisplay.get())))
+		self.display(self.current)
+
+
+	def tan(self):
+		self.result = False
+		self.current = math.tan(math.radians(float(txtDisplay.get())))
+		self.display(self.current)
+
+	
+	def tanh(self):
+		self.result = False
+		self.current = math.tanh(math.radians(float(txtDisplay.get())))
+		self.display(self.current)
+
+	
+	def sin(self):
+		self.result = False
+		self.current = math.sin(math.radians(float(txtDisplay.get())))
+		self.display(self.current)
+
+	def sinh(self):
+		self.result = False
+		self.current = math.sinh(math.radians(float(txtDisplay.get())))
+		self.display(self.current)
+	
+	def log(self):
+		self.result = False
+		self.current = math.log(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	def exp(self):
+		self.result = False
+		self.current = math.exp(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	def pi(self):
+		self.result = False
+		self.current = math.pi
+		self.display(self.current)
+		
+	def pi2(self):
+		self.result = False
+		self.current = math.tau
+		self.display(self.current)
+	
+	def e(self):
+		self.result = False
+		self.current = math.e
+		self.display(self.current)
 	
 		
+	def acosh(self):
+		self.result = False
+		self.current = math.acosh(float(txtDisplay.get()))
+		self.display(self.current)
 	
-
+	
+	def asin(self):
+		self.result = False
+		self.current = math.acosh(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	
+	def expm1(self):
+		self.result = False
+		self.current = math.expm1(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	
+	def lgamma(self):
+		self.result = False
+		self.current = math.lgamma(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	
+	def degrees(self):
+		self.result = False
+		self.current = math.degrees(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	def log2(self):
+		self.result = False
+		self.current = math.log2(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	def log10(self):
+		self.result = False
+		self.current = math.log10(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	def log1p(self):
+		self.result = False
+		self.current = math.log1p(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	
+	
+	
 added_value = Calc()
 
 
@@ -104,13 +224,13 @@ for j in range(2, 5):
 # ---------------------Butttons area--------------------------------------
 
 # C
-btnClear = Button(calc, text= "C", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 1, column = 0, pady = 1)
+btnClear = Button(calc, text= "C", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.Clear_Entry).grid(row = 1, column = 0, pady = 1)
 
 # CE or AC
-btnAllClear = Button(calc, text= "CE", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 1, column = 1, pady = 1)
+btnAllClear = Button(calc, text= "CE", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.all_Clear_Entry).grid(row = 1, column = 1, pady = 1)
 
 # sqare root
-btnSq = Button(calc, text= "√", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 1, column = 2, pady = 1)
+btnSq = Button(calc, text= "√", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.squared).grid(row = 1, column = 2, pady = 1)
 
 # Plus or add
 btnAdd = Button(calc, text= "+", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = lambda: added_value.operation("add")).grid(row = 1, column = 3, pady = 1)
@@ -138,13 +258,13 @@ btnDot = Button(calc, text= ".", width = 6, height = 2, font=('ariel', 20, 'bold
 btnPM = Button(calc, text= chr(177), width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 5, column = 2, pady = 1)
 
 # Evaluate or equals
-btnEquals = Button(calc, text= "=", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 5, column = 3, pady = 1)
+btnEquals = Button(calc, text= "=", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.sum_of_total).grid(row = 5, column = 3, pady = 1)
 
 #-------------------------------- Scientific Calci----------------------------
 
 # ======================     Row 1	======================================
 # Pi - π
-btnPi = Button(calc, text= "π", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 1, column = 4, pady = 1)
+btnPi = Button(calc, text= "π", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.pi).grid(row = 1, column = 4, pady = 1)
 
 # Cos 
 btnSq = Button(calc, text= "cos", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 1, column = 5, pady = 1)
@@ -158,7 +278,7 @@ btnSub = Button(calc, text= "sin", width = 6, height = 2, font=('ariel', 20, 'bo
 
 # =======================	Row 2	===============================
 # 2 pi
-btn2Pi = Button(calc, text= "2π", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 2, column = 4, pady = 1)
+btn2Pi = Button(calc, text= "2π", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.pi2).grid(row = 2, column = 4, pady = 1)
 
 # Cosh
 btnCosh = Button(calc, text= "cosh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4).grid(row = 2, column = 5, pady = 1)
@@ -184,7 +304,7 @@ btnExp = Button(calc, text= "Exp", width = 6, height = 2, font=('ariel', 20, 'bo
 btnMod = Button(calc, text= "Mod", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, command = lambda: added_value.operation("mod")).grid(row = 3, column = 6, pady = 1)
 
 # E - e
-btnE = Button(calc, text= "e", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4).grid(row = 3, column = 7, pady = 1)
+btnE = Button(calc, text= "e", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, command = added_value.e).grid(row = 3, column = 7, pady = 1)
 
 
 # =======================	Row 4	===============================
