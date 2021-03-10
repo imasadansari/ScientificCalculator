@@ -89,6 +89,11 @@ class Calc():
 		self.Clear_Entry()
 		self.total = 0
 	
+	def mathsPM(self):
+		self.result = False
+		self.current = -(float(txtDisplay.get()))
+		self.display(self.current)
+	
 	
 	def squared(self):
 		self.result = False
@@ -255,7 +260,7 @@ btnZero = Button(calc, text= "0", width = 6, height = 2, font=('ariel', 20, 'bol
 btnDot = Button(calc, text= ".", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue" , command = lambda: added_value.numberEnter(".")).grid(row = 5, column = 1, pady = 1)
 
 # PM
-btnPM = Button(calc, text= chr(177), width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue").grid(row = 5, column = 2, pady = 1)
+btnPM = Button(calc, text= chr(177), width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.mathsPM).grid(row = 5, column = 2, pady = 1)
 
 # Evaluate or equals
 btnEquals = Button(calc, text= "=", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, bg = "powder blue", command = added_value.sum_of_total).grid(row = 5, column = 3, pady = 1)
