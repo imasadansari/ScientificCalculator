@@ -82,6 +82,9 @@ class Calc():
 				self.total /= self.current
 		if self.op == "mod":
 			self.total %= self.current
+			
+		if self.op == "power":
+			self.total = math.pow(self.total, self.current)
 		self.input_value = True
 		self.check_sum = False
 		self.display(self.total)
@@ -211,6 +214,19 @@ class Calc():
 		self.result = False
 		self.current = math.e
 		self.display(self.current)
+	
+	# Factorial Function
+	def fact(self):
+		self.result = False
+		self.current = math.factorial(float(txtDisplay.get()))
+		self.display(self.current)
+	
+	
+	def acosh(self):
+		self.result = False
+		self.current = math.acosh(float(txtDisplay.get()))
+		self.display(self.current)
+	
 	
 		
 	def acosh(self):
@@ -346,30 +362,36 @@ btnEquals = Button(calc, text= "=", width = 6, height = 2, font=('ariel', 20, 'b
 # Pi - π
 btnPi = Button(calc, text= "π", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.pi).grid(row = 1, column = 4, pady = 1)
 
-# Cos 
-btnCos = Button(calc, text= "cos", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.cos).grid(row = 1, column = 5, pady = 1)
+# deg
+btnDeg = Button(calc, text= "deg", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "orange",  bg = "#566666", command = added_value.degrees).grid(row = 1, column = 5, pady = 1)
 
-# tan
-btnTan = Button(calc, text= "tan", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.tan).grid(row = 1, column = 6, pady = 1)
+# ACosh
+#btnACosh = Button(calc, text= "acosh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.acosh).grid(row = 4, column = 6, pady = 1)
+
+# Power
+btnPow = Button(calc, text= "x^y", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "orange",  bg = "#566666", command = lambda: added_value.operation("power")).grid(row = 1, column = 6, pady = 1)
 
 
-# Sin
-btnSin = Button(calc, text= "sin", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.sin).grid(row = 1, column = 7, pady = 1)
+# asinh
+#btnASinh = Button(calc, text= "asinh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.asinh).grid(row = 4, column = 7, pady = 1)
+
+# Factorial of x
+btnFact = Button(calc, text= "x!", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "orange",  bg = "#566666", command = added_value.fact).grid(row = 1, column = 7, pady = 1)
 
 # =======================	Row 2	===============================
 # 2 pi
 btn2Pi = Button(calc, text= "2π", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.pi2).grid(row = 2, column = 4, pady = 1)
 
-# Cosh
-btnCosh = Button(calc, text= "cosh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.cosh).grid(row = 2, column = 5, pady = 1)
 
-# Tamh
-btnTanh = Button(calc, text= "tanh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.tanh).grid(row = 2, column = 6, pady = 1)
+# Cos 
+btnCos = Button(calc, text= "cos", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.cos).grid(row = 2, column = 5, pady = 1)
+
+# tan
+btnTan = Button(calc, text= "tan", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.tan).grid(row = 2, column = 6, pady = 1)
 
 
-# Sinh
-btnSinh = Button(calc, text= "sinh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.sinh).grid(row = 2, column = 7, pady = 1)
-
+# Sin
+btnSin = Button(calc, text= "sin", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.sin).grid(row = 2, column = 7, pady = 1)
 
 
 # =======================	Row 3	===============================
@@ -391,15 +413,17 @@ btnE = Button(calc, text= "e", width = 6, height = 2, font=('ariel', 20, 'bold')
 # log2
 btnLog2 = Button(calc, text= "log2", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.log2).grid(row = 4, column = 4, pady = 1)
 
-# deg
-btnDeg = Button(calc, text= "deg", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "orange",  bg = "#566666", command = added_value.degrees).grid(row = 4, column = 5, pady = 1)
 
 # Cosh
-btnCosh = Button(calc, text= "acosh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.acosh).grid(row = 4, column = 6, pady = 1)
+btnCosh = Button(calc, text= "cosh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.cosh).grid(row = 4, column = 5, pady = 1)
+
+# Tamh
+btnTanh = Button(calc, text= "tanh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.tanh).grid(row = 4, column = 6, pady = 1)
 
 
-# asinh
-btnASinh = Button(calc, text= "asinh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.asinh).grid(row = 4, column = 7, pady = 1)
+# Sinh
+btnSinh = Button(calc, text= "sinh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.sinh).grid(row = 4, column = 7, pady = 1)
+
 
 
 # =======================	Row 5	===============================
