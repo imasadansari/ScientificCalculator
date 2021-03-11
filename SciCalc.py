@@ -218,9 +218,14 @@ class Calc():
 	# Factorial Function
 	def fact(self):
 		self.result = False
-		self.current = math.factorial(float(txtDisplay.get()))
+		temp = float(txtDisplay.get())
+		# TO prevent ValueError: factorial() not defined for negative values EXCEPTION
+		if temp >= 0:
+			self.current = math.factorial(float(txtDisplay.get()))
+		else: 
+			self.current = 0.0
+			print("Factorial of negative number cannot be taken")
 		self.display(self.current)
-	
 	
 	def acosh(self):
 		self.result = False
