@@ -38,6 +38,8 @@ class Calc():
 				if secondnum in firstnum:
 					return
 			self.current = firstnum + secondnum
+			if float(self.current) == 0.0:
+				self.current = 0
 		self.display(self.current)
 	
 	# Function for equals
