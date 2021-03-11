@@ -72,6 +72,8 @@ class Calc():
 				self.current = self.total
 				self.display(self.current)
 				print("U cannot devide by 0")
+				
+			# To Prevent negative Zero result of operations like (0 / -1) = (-0.0)
 			elif self.total == 0 and self.current < 0:
 				self.total = 0
 				print("Negative Zero result of division prevented")
@@ -125,9 +127,19 @@ class Calc():
 	# Squre root
 	def squared(self):
 		self.result = False
-		self.current = math.sqrt(float(txtDisplay.get()))
-		self.display(self.current)
-		
+		temp = float(txtDisplay.get())
+		# GEtting Exception in case of taking sqare root of Negative numbers
+		if temp >= 0:
+			self.current = math.sqrt(float(txtDisplay.get()))
+			self.display(self.current)
+		else:
+			# Prevent Exception : ValueError: math domain error
+			# Occured due to taking sqare root of negative numeber
+			self.current = temp
+			self.display(self.current)
+			print("Cannot calculate Sqaure root of Negative numbers")
+			
+	
 	# Trigonometric functions
 	def cos(self):
 		self.result = False
