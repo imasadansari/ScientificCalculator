@@ -30,15 +30,17 @@ class Calc():
 		self.result = False
 		firstnum = txtDisplay.get()
 		secondnum = str(num)
+		flag = False
 		if self.input_value:
 			self.current = secondnum
 			self.input_value = False
 		else:
 			if secondnum == '.':
+				flag = True
 				if secondnum in firstnum:
 					return
 			self.current = firstnum + secondnum
-			if float(self.current) == 0.0:
+			if (float(self.current) == 0.0) and (not flag):
 				self.current = 0
 		self.display(self.current)
 	
