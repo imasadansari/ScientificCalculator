@@ -3,7 +3,7 @@ import math
 import parser
 import tkinter.messagebox
 
-#print("All Goood with imports")
+# print("All Goood with imports")
 
 root = Tk()
 root.title("Scientific Calculator")
@@ -61,7 +61,12 @@ class Calc():
 		if self.op == "sub":
 			self.total -= self.current
 		if self.op == "multi":
-			self.total *= self.current
+			# To prevent operations like (-1 * 0 == -0.0)
+			if(self.total == 0 or self.current == 0):
+				self.total = 0.0
+				print("Negative Zero result from multiplication prevented")
+			else:
+				self.total *= self.current
 		if self.op == "divide":
 			if self.current == 0:
 				self.current = self.total
@@ -103,9 +108,16 @@ class Calc():
 	# For Plus Minus
 	def mathsPM(self):
 		self.result = False
-		self.current = -(float(txtDisplay.get()))
-		self.display(self.current)
-	
+		temp = float(txtDisplay.get())
+		# TO prevent negative zero
+		if temp != 0: 
+			self.current = -1 * temp
+			self.display(self.current)
+		else:
+			print("Cannot negate zero")
+			self.current = temp
+			self.display(self.current)
+			
 	# Squre root
 	def squared(self):
 		self.result = False
