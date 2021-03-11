@@ -72,6 +72,10 @@ class Calc():
 				self.current = self.total
 				self.display(self.current)
 				print("U cannot devide by 0")
+			elif self.total == 0 and self.current < 0:
+				self.total = 0
+				print("Negative Zero result of division prevented")
+			
 			else:
 				self.total /= self.current
 		if self.op == "mod":
