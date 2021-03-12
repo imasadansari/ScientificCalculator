@@ -40,7 +40,7 @@ class Calc():
 				if secondnum in firstnum:
 					return
 			self.current = firstnum + secondnum
-			if (float(self.current) == 0.0) and (not flag):
+			if (float(self.current) == 0.0) and (not flag): # TO solve 0.0001 problem
 				self.current = 0
 		self.display(self.current)
 	
@@ -132,7 +132,7 @@ class Calc():
 			self.display(self.current)
 			
 	# Squre root
-	def squared(self):
+	def square_root(self):
 		self.result = False
 		temp = float(txtDisplay.get())
 		# GEtting Exception in case of taking sqare root of Negative numbers
@@ -145,7 +145,7 @@ class Calc():
 			self.current = temp
 			self.display(self.current)
 			print("Cannot calculate Sqaure root of Negative numbers")
-			
+		return self.current
 	
 	# Trigonometric functions
 	def cos(self):
@@ -191,6 +191,7 @@ class Calc():
 			self.current = math.log(float(txtDisplay.get()))
 			self.display(self.current)
 		else:
+			print("Cannot take calculate natural log of negative number or Zero")
 			self.current = 0
 			self.total = 0
 			self.display(0)
@@ -220,16 +221,22 @@ class Calc():
 		self.display(self.current)
 	
 	# Factorial Function
-	def fact(self):
+	def factorial(self):
 		self.result = False
 		temp = float(txtDisplay.get())
 		# TO prevent ValueError: factorial() not defined for negative values EXCEPTION
 		if temp >= 0:
-			self.current = math.factorial(float(txtDisplay.get()))
+			# print(temp, "    ", round(temp))
+			if temp == float(round(temp)):
+				self.current = math.factorial(float(txtDisplay.get()))
+			else:
+				self.current = round(temp)
+				print("Cannot take Factorial of Decimal Numbers, SO we converted It to INT")		
 		else: 
 			self.current = 0.0
 			print("Factorial of negative number cannot be taken")
 		self.display(self.current)
+	
 	
 	def acosh(self):
 		self.result = False
@@ -335,7 +342,7 @@ btnClear = Button(calc, text= "C", width = 6, height = 2, font=('ariel', 20, 'bo
 btnAllClear = Button(calc, text= "CE", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.all_Clear_Entry).grid(row = 1, column = 1, pady = 1)
 
 # sqare root
-btnSq = Button(calc, text= "√", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.squared).grid(row = 1, column = 2, pady = 1)
+btnSq = Button(calc, text= "√", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4,fg = "white",  bg = "#566666", command = added_value.square_root).grid(row = 1, column = 2, pady = 1)
 
 # Plus or add
 btnAdd = Button(calc, text= "+", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = lambda: added_value.operation("add")).grid(row = 1, column = 3, pady = 1)
@@ -385,7 +392,7 @@ btnPow = Button(calc, text= "x^y", width = 6, height = 2, font=('ariel', 20, 'bo
 #btnASinh = Button(calc, text= "asinh", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "white",  bg = "#566666", command = added_value.asinh).grid(row = 4, column = 7, pady = 1)
 
 # Factorial of x
-btnFact = Button(calc, text= "x!", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "orange",  bg = "#566666", command = added_value.fact).grid(row = 1, column = 7, pady = 1)
+btnFactorial = Button(calc, text= "x!", width = 6, height = 2, font=('ariel', 20, 'bold'), bd = 4, fg = "orange",  bg = "#566666", command = added_value.factorial).grid(row = 1, column = 7, pady = 1)
 
 # =======================	Row 2	===============================
 # 2 pi
@@ -500,6 +507,60 @@ helpmenu.add_command(label = "Here is help!")
 
 
 root.config(menu=menubar)
+#root.destroy()
 root.mainloop()
+
+
+# ----------------------------------------------------	Testing Functions	----------------------------------
+
+
+def square_root(x):
+	# GEtting Exception in case of taking sqare root of Negative numbers
+	if x >= 0:
+		x = math.sqrt(x)
+		return x
+	else:
+		# Prevent Exception : ValueError: math domain error
+		# Occured due to taking sqare root of negative numeber
+		# x = x
+		print("Cannot calculate Sqaure root of Negative numbers")
+		return float(x)
+
+
+def factorial(x):
+	
+	temp = float(x)
+	# TO prevent ValueError: factorial() not defined for negative values EXCEPTION
+	if temp >= 0:
+		# print(temp, "    ", round(temp))
+		if temp == float(round(temp)):
+			temp = math.factorial(float(temp))
+		else:
+			temp = round(temp)
+			print("Cannot take Factorial of Decimal Numbers, SO we converted It to INT")		
+	else: 
+		temp = 0.0
+		print("Factorial of negative number cannot be taken")
+	return temp
+
+
+# For natural log
+def log(x):
+	temp = float(x)
+	
+	if(temp > 0):
+		temp = math.log(float(temp))
+		#return temp
+	else:
+		temp = 0
+	return temp	
+
+def power(x, y):
+    return math.pow(x, y)
+    
+# ---------------------------------------------		End		----------------------------------------------------
+
+
+
 
 
