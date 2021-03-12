@@ -507,8 +507,8 @@ helpmenu.add_command(label = "Here is help!")
 
 
 root.config(menu=menubar)
-#root.destroy()
-root.mainloop()
+root.destroy()
+#root.mainloop()
 
 
 # ----------------------------------------------------	Testing Functions	----------------------------------
