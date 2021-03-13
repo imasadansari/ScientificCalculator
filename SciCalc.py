@@ -4,7 +4,7 @@ import parser
 import tkinter.messagebox
 
 # print("All Goood with imports")
-
+'''
 root = Tk()
 root.title("Scientific Calculator")
 root.configure(background = "#566666")
@@ -509,7 +509,7 @@ helpmenu.add_command(label = "Here is help!")
 root.config(menu=menubar)
 root.destroy()
 #root.mainloop()
-
+'''
 
 # ----------------------------------------------------	Testing Functions	----------------------------------
 
