@@ -2,7 +2,7 @@
 Unit tests for the calculator library
 """
 # Import the main Scientific Calculator File
-import SciCalc
+import CalculatorFunc as SciCalc
 
 class TestCalculator:
 
