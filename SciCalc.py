@@ -1,10 +1,10 @@
 from tkinter import *
 import math
+'''
 import parser
 import tkinter.messagebox
 
 # print("All Goood with imports")
-'''
 root = Tk()
 root.title("Scientific Calculator")
 root.configure(background = "#566666")
